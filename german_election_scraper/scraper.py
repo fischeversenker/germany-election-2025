@@ -1,4 +1,5 @@
 import requests
+import json
 from bs4 import BeautifulSoup
 
 def fetch_federal_states():
@@ -33,14 +34,31 @@ def fetch_constituency_data(constituency_url):
         print(f"Failed to fetch constituency data: {response.status_code}")
         return
     soup = BeautifulSoup(response.content, 'html.parser')
-    table = soup.find('table')
-    if table:
-        print("Tabular data found:")
-    if table:
-        for row in table.find_all('tr'):
-            columns = row.find_all('td')
-            if columns:
-                print([col.get_text(strip=True) for col in columns])
+    main_section = soup.find('main')
+    if not main_section:
+        print("No main section found.")
+        return
+
+    data = {}
+    figures = main_section.find_all('figure')
+    for figure in figures:
+        caption = figure.find('caption')
+        table = figure.find('table')
+        if caption and table:
+            caption_text = caption.get_text(strip=True)
+            data[caption_text] = {}
+            for row in table.find_all('tr'):
+                th = row.find('th')
+                td = row.find('td')
+                if th and td:
+                    data[caption_text][th.get_text(strip=True)] = td.get_text(strip=True)
+
+    # Extract the wahlkreis number from the URL
+    wahlkreis_number = constituency_url.split('-')[-1].split('.')[0]
+    json_filename = f"strukturdaten-{wahlkreis_number}.json"
+    with open(json_filename, 'w', encoding='utf-8') as json_file:
+        json.dump(data, json_file, ensure_ascii=False, indent=4)
+    print(f"Data saved to {json_filename}")
 
 if __name__ == "__main__":
     fetch_federal_states()
