@@ -2,13 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 
 def fetch_federal_states():
-    base_url = "https://www.bundeswahlleiterin.de/bundestagswahlen/2025/ergebnisse/"
+    base_url = "https://www.bundeswahlleiterin.de/bundestagswahlen/2025/strukturdaten/"
     url = base_url + "bund-99.html"
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
     states = soup.find_all('a', href=True)
     for state in states:
-        if "bund-99/land-" in state['href']:
+        if "strukturdaten/bund-99/land-" in state['href']:
             print(f"Fetching constituencies for {state.text}")
             fetch_constituencies(base_url + state['href'])
 
