@@ -68,15 +68,15 @@ def fetch_constituency_data(constituency_url):
         if table:
             print(
                 f"Processing figure with caption: {caption.get_text(strip=True)}")
-            caption_text = caption.get_text(strip=True)
+            caption_text = caption.get_text(separator=" ", strip=True)
             print(f"Extracting data for caption: {caption_text}")
             data[caption_text] = {}
             for row in table.find_all('tr'):
                 th = row.find('th')
                 td = row.find('td')
                 if th and td:
-                    th_text = th.get_text(strip=True)
-                    td_text = td.get_text(strip=True)
+                    th_text = th.get_text(separator=" ", strip=True)
+                    td_text = td.get_text(separator=" ", strip=True)
                     print(f"Extracted row: {th_text} -> {td_text}")
                     data[caption_text][th_text] = td_text
         else:
