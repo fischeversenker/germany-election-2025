@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 def fetch_federal_states():
     base_url = "https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/strukturdaten/"
     url = base_url + "bund-99.html"
+    print(f"Fetching federal states from {url}")
     response = requests.get(url)
     if response.status_code != 200:
         print(f"Failed to fetch federal states: {response.status_code}")
@@ -13,9 +14,12 @@ def fetch_federal_states():
     states = soup.find_all('a', href=True)
     for state in states:
         if "bund-99/land-" in state['href']:
+            print(f"Processing federal state: {state.text}")
             fetch_constituencies(base_url + state['href'])
+            break  # Only process the first federal state for now
 
 def fetch_constituencies(state_url):
+    print(f"Fetching constituencies from {state_url}")
     response = requests.get(state_url)
     if response.status_code != 200:
         print(f"Failed to fetch constituencies: {response.status_code}")
@@ -24,11 +28,12 @@ def fetch_constituencies(state_url):
     constituencies = soup.find_all('a', href=True)
     for constituency in constituencies:
         if "/land-" in constituency['href'] and "/wahlkreis-" in constituency['href']:
-            print(f"Fetching data for {constituency.text}")
+            print(f"Processing constituency: {constituency.text}")
             fetch_constituency_data(state_url.rsplit('/', 1)[0] + '/' + constituency['href'])
             break
 
 def fetch_constituency_data(constituency_url):
+    print(f"Fetching constituency data from {constituency_url}")
     response = requests.get(constituency_url)
     if response.status_code != 200:
         print(f"Failed to fetch constituency data: {response.status_code}")
