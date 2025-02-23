@@ -67,7 +67,7 @@ def fetch_constituency_data(constituency_url):
     print(f"Saving data to {json_filename}")
     with open(json_filename, 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=4)
-    print(f"Data saved to {json_filename}")
+    print(f"Data successfully saved to {json_filename}")
 
 if __name__ == "__main__":
     fetch_federal_states()
