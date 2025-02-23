@@ -34,6 +34,7 @@ def fetch_constituencies(state_url):
 
 def fetch_constituency_data(constituency_url):
     print(f"Fetching constituency data from {constituency_url}")
+    print("Starting data extraction process...")
     response = requests.get(constituency_url)
     if response.status_code != 200:
         print(f"Failed to fetch constituency data: {response.status_code}")
@@ -42,10 +43,8 @@ def fetch_constituency_data(constituency_url):
     main_section = soup.find('main')
     if main_section:
         print("Main section found.")
+        print("Main section found.")
     else:
-        print("No main section found.")
-        return
-    if not main_section:
         print("No main section found.")
         return
 
