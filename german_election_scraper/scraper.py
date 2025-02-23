@@ -23,7 +23,22 @@ def fetch_constituencies(state_url):
     constituencies = soup.find_all('a', href=True)
     for constituency in constituencies:
         if "/land-" in constituency['href'] and "/wahlkreis-" in constituency['href']:
-            print(constituency.text, constituency['href'])
+            print(f"Fetching data for {constituency.text}")
+            fetch_constituency_data(state_url.rsplit('/', 1)[0] + '/' + constituency['href'])
+            break
+
+def fetch_constituency_data(constituency_url):
+    response = requests.get(constituency_url)
+    if response.status_code != 200:
+        print(f"Failed to fetch constituency data: {response.status_code}")
+        return
+    soup = BeautifulSoup(response.content, 'html.parser')
+    table = soup.find('table')
+    if table:
+        for row in table.find_all('tr'):
+            columns = row.find_all('td')
+            if columns:
+                print([col.get_text(strip=True) for col in columns])
 
 if __name__ == "__main__":
     fetch_federal_states()
