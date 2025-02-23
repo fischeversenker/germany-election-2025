@@ -27,7 +27,7 @@ def fetch_constituencies(state_url):
     soup = BeautifulSoup(response.content, 'html.parser')
     constituencies = soup.find_all('a', href=True)
     for constituency in constituencies:
-        if "wahlkreis" in constituency['href']:
+        if "/land-" in constituency['href'] and "/wahlkreis-" in constituency['href']:
             print(constituency.text, constituency['href'])
 
 if __name__ == "__main__":
