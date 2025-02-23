@@ -1,0 +1,97 @@
+{
+    "Geography": {
+        "Number of municipalities on 31. Dec 2023": 45.0,
+        "Area in km² on 31  Dec 2023": "2,430.1"
+    },
+    "Population and age": {
+        "Population figures on 31 Dec. 2023": {
+            "... total (in 1,000)": 279.1,
+            "... therefrom Germans (in 1,000)": 244.8,
+            "... therefrom foreigners": "12.3 %"
+        },
+        "Population density as at 31 Dec 2023": {
+            "... inhabitants per km²": 114.9
+        },
+        "Increase (+)/decrease (-) of the population 2023 (in 1,000)": {
+            "... birth balance": "-3.9",
+            "... migration balance": 17.0
+        },
+        "": {},
+        "… under 18": "16.8 %",
+        "... 18 - 24": "7.0 %",
+        "... 25 - 34": "11.5 %",
+        "... 35 - 59": "32.9 %",
+        "... 60 - 74": "20.9 %",
+        "... 75 and over": "10.8 %"
+    },
+    "Area survey by type of actual use": {
+        "Floor area by type of actual use on 31 Dec 2022": {
+            "… settlement and traffic": "11.2 %",
+            "… vegetation and water bodies": "88.8 %"
+        }
+    },
+    "Construction and housing": {
+        "Dwelling completed 2023 (per 1,000 inhabitants)": 4.9,
+        "Stock of dwellings on 31 De. 2023 (per 1,000 inhabitants)": 492.1,
+        "Useful floor space on 31 Dec 2023 (per dwelling)": 105.1,
+        "Useful floor space on 31 Dec 2023 (per 1,000 inhabitants)": 51.7
+    },
+    "Stock of passenger cars": {
+        "Stock of passenger cars on 1 Jan 2024": {
+            "... total (per 1,000 inhabitants)": 681.5,
+            "… of which: with electric or hybrid drive": "5.8 %"
+        }
+    },
+    "Business register": {
+        "Total companies 2022 (per 1,000 inhabitants)": 36.9,
+        "Craft companies 2022 (per 1,000 inhabitants)": 7.2
+    },
+    "Vocational Education System": {
+        "Graduates and school leavers of vocational schools 2022 (per 1,000 inhabitants)": 4.9
+    },
+    "General Education System": {
+        "Graduates an school leavers having completed their education 2022": {
+            "... total without externals (per 1,000 inhabitants)": 9.4,
+            "... without secondary general school certificate": "8.4 %",
+            "... with secondary general school certificate": "19.9 %",
+            "... with intermediate school certificate": "47.1 %",
+            "... with university entrance qualification": "24.6 %"
+        }
+    },
+    "Children in publicly funded day care": {
+        "Children cared for on 1 Mar 2023 (care rate)": {
+            "… unter 3 years": 30.4,
+            "… 3 to under 6 years": 92.4
+        }
+    },
+    "National accounts": {
+        "Disposable income of households 2021 (EUR per habitant)": "24,346.0",
+        "Gross domestic product 2021 (EUR per inhabitant)": "36,955.0"
+    },
+    "Employees subject to social insurance contributions": {
+        "Employees subject to social insurance contributions on 30 June 2023": {
+            "... total (per 1,000 inhabitants)": 374.1,
+            "... agriculture and forestry, fishing": "0.6 %",
+            "... industry": "43.4 %",
+            "... trade, hotel and restaurant industry, transport": "18.0 %",
+            "... public and other service activities": "9.9 %",
+            "... other service providers, not specified": "28.1 %"
+        }
+    },
+    "Recipients of unemployment benefit II and of social allowance": {
+        "Recipients of unemployment benefit II and of social allowance at the end of August 2024": {
+            "... total (per 1,000 inhabitants)": 35.0,
+            "... therefrom including individuals not capable of earning and in need of assistance": "27.1 %",
+            "... therefrom foreigner": "50.2 %"
+        }
+    },
+    "Unemployment rate": {
+        "Unemployment rate at the end of November 2024": {
+            "... total": "3.6 %",
+            "... therefrom male": "3.6 %",
+            "... therefrom female": "3.6 %",
+            "... therefrom in the age from 15 to 24 years": "2.9 %",
+            "... therefrom in the age from 55 to 64 years": "4.6 %"
+        }
+    }
+}
