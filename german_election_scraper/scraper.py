@@ -2,6 +2,7 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
+
 def fetch_federal_states():
     base_url = "https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/strukturdaten/"
     url = base_url + "bund-99.html"
@@ -18,6 +19,7 @@ def fetch_federal_states():
             fetch_constituencies(base_url + state['href'])
             break  # Only process the first federal state for now
 
+
 def fetch_constituencies(state_url):
     print(f"Fetching constituencies from {state_url}")
     response = requests.get(state_url)
@@ -27,10 +29,12 @@ def fetch_constituencies(state_url):
     soup = BeautifulSoup(response.content, 'html.parser')
     constituencies = soup.find_all('a', href=True)
     for constituency in constituencies:
-        if "/land-" in constituency['href'] and "/wahlkreis-" in constituency['href']:
+        if "land-" in constituency['href'] and "/wahlkreis-" in constituency['href']:
             print(f"Processing constituency: {constituency.text}")
-            fetch_constituency_data(state_url.rsplit('/', 1)[0] + '/' + constituency['href'])
+            fetch_constituency_data(state_url.rsplit(
+                '/', 1)[0] + '/' + constituency['href'])
             break
+
 
 def fetch_constituency_data(constituency_url):
     print(f"Fetching constituency data from {constituency_url}")
@@ -65,14 +69,16 @@ def fetch_constituency_data(constituency_url):
             print("Table found in figure.")
         else:
             print("No table found in figure.")
-            print(f"Processing figure with caption: {caption.get_text(strip=True)}")
+            print(
+                f"Processing figure with caption: {caption.get_text(strip=True)}")
             caption_text = caption.get_text(strip=True)
             data[caption_text] = {}
             for row in table.find_all('tr'):
                 th = row.find('th')
                 td = row.find('td')
                 if th and td:
-                    data[caption_text][th.get_text(strip=True)] = td.get_text(strip=True)
+                    data[caption_text][th.get_text(
+                        strip=True)] = td.get_text(strip=True)
 
     # Extract the wahlkreis number from the URL
     wahlkreis_number = constituency_url.split('-')[-1].split('.')[0]
@@ -82,6 +88,7 @@ def fetch_constituency_data(constituency_url):
     with open(json_filename, 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=4)
     print(f"Data successfully saved to {json_filename}")
+
 
 if __name__ == "__main__":
     fetch_federal_states()
