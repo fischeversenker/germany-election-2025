@@ -64,6 +64,7 @@ def fetch_constituency_data(constituency_url):
     # Extract the wahlkreis number from the URL
     wahlkreis_number = constituency_url.split('-')[-1].split('.')[0]
     json_filename = f"strukturdaten-{wahlkreis_number}.json"
+    print(f"Extracted data: {data}")
     print(f"Saving data to {json_filename}")
     with open(json_filename, 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=4)
