@@ -66,9 +66,6 @@ def fetch_constituency_data(constituency_url):
         else:
             print("No caption found in figure.")
         if table:
-            print("Table found in figure.")
-        else:
-            print("No table found in figure.")
             print(
                 f"Processing figure with caption: {caption.get_text(strip=True)}")
             caption_text = caption.get_text(strip=True)
@@ -82,6 +79,8 @@ def fetch_constituency_data(constituency_url):
                     td_text = td.get_text(strip=True)
                     print(f"Extracted row: {th_text} -> {td_text}")
                     data[caption_text][th_text] = td_text
+        else:
+            print("No table found.")
 
     # Extract the wahlkreis number from the URL
     wahlkreis_number = constituency_url.split('-')[-1].split('.')[0]
