@@ -83,6 +83,9 @@ def fetch_constituency_data(constituency_url):
                     # This is a regular row
                     th_text = th.get_text(separator=" ", strip=True).rstrip(" i")
                     td_text = td.get_text(separator=" ", strip=True)
+                    # Convert to float if the value is numeric and not a percentage
+                    if td_text.replace('.', '', 1).isdigit() and not td_text.endswith('%'):
+                        td_text = float(td_text)
                     print(f"Extracted row: {th_text} -> {td_text}")
                     if current_subheading:
                         data[caption_text][current_subheading][th_text] = td_text
