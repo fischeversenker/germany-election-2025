@@ -16,7 +16,11 @@ def fetch_federal_states():
         return
     soup = BeautifulSoup(response.content, 'html.parser')
     states = soup.find_all('a', href=True)
+    processed_states = set()
     for state in states:
+        if state['href'] in processed_states:
+            continue
+        processed_states.add(state['href'])
         if "bund-99/land-" in state['href']:
             print(f"Processing federal state: {state.text}")
             fetch_constituencies(base_url + state['href'])
@@ -30,7 +34,11 @@ def fetch_constituencies(state_url):
         return
     soup = BeautifulSoup(response.content, 'html.parser')
     constituencies = soup.find_all('a', href=True)
+    processed_constituencies = set()
     for constituency in constituencies:
+        if constituency['href'] in processed_constituencies:
+            continue
+        processed_constituencies.add(constituency['href'])
         if "land-" in constituency['href'] and "/wahlkreis-" in constituency['href']:
             print(f"Processing constituency: {constituency.text}")
             fetch_constituency_data(state_url.rsplit(
