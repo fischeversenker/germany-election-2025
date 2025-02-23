@@ -35,6 +35,8 @@ def fetch_constituency_data(constituency_url):
     soup = BeautifulSoup(response.content, 'html.parser')
     table = soup.find('table')
     if table:
+        print("Tabular data found:")
+    if table:
         for row in table.find_all('tr'):
             columns = row.find_all('td')
             if columns:
