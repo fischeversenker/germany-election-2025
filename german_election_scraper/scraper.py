@@ -66,10 +66,8 @@ def fetch_constituency_data(constituency_url):
         else:
             print("No caption found in figure.")
         if table:
-            print(
-                f"Processing figure with caption: {caption.get_text(strip=True)}")
-            caption_text = caption.get_text(separator=" ", strip=True).rstrip(" i")
-            print(f"Extracting data for caption: {caption_text}")
+            caption_text = caption.get_text(
+                separator=" ", strip=True).rstrip(" i")
             data[caption_text] = {}
             current_subheading = None
             for row in table.find_all('tr'):
@@ -77,11 +75,13 @@ def fetch_constituency_data(constituency_url):
                 td = row.find('td')
                 if th and not td:
                     # This is a subheading
-                    current_subheading = th.get_text(separator=" ", strip=True).rstrip(" i")
+                    current_subheading = th.get_text(
+                        separator=" ", strip=True).rstrip(" i")
                     data[caption_text][current_subheading] = {}
                 elif th and td:
                     # This is a regular row
-                    th_text = th.get_text(separator=" ", strip=True).rstrip(" i")
+                    th_text = th.get_text(
+                        separator=" ", strip=True).rstrip(" i")
                     td_text = td.get_text(separator=" ", strip=True)
                     # Convert to float if the value is numeric and not a percentage
                     if td_text.replace('.', '', 1).isdigit() and not td_text.endswith('%'):
