@@ -71,7 +71,23 @@ def fetch_constituency_data(constituency_url):
             caption_text = caption.get_text(separator=" ", strip=True)
             print(f"Extracting data for caption: {caption_text}")
             data[caption_text] = {}
+            current_subheading = None
             for row in table.find_all('tr'):
+                th = row.find('th')
+                td = row.find('td')
+                if th and not td:
+                    # This is a subheading
+                    current_subheading = th.get_text(separator=" ", strip=True)
+                    data[caption_text][current_subheading] = {}
+                elif th and td:
+                    # This is a regular row
+                    th_text = th.get_text(separator=" ", strip=True)
+                    td_text = td.get_text(separator=" ", strip=True)
+                    print(f"Extracted row: {th_text} -> {td_text}")
+                    if current_subheading:
+                        data[caption_text][current_subheading][th_text] = td_text
+                    else:
+                        data[caption_text][th_text] = td_text
                 th = row.find('th')
                 td = row.find('td')
                 if th and td:
