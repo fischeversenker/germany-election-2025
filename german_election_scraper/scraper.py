@@ -13,8 +13,8 @@ def fetch_federal_states():
     states = soup.find_all('a', href=True)
     print("Federal states found:")
     for state in states:
-        print(state.text, state['href'])
-        if "strukturdaten/bund-99/land-" in state['href']:
+        if "bund-99/land-" in state['href']:
+            print(state.text, state['href'])
             print(f"Fetching constituencies for {state.text}")
             fetch_constituencies(base_url + state['href'])
 
