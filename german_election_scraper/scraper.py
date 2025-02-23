@@ -46,10 +46,13 @@ def fetch_constituency_data(constituency_url):
 
     data = {}
     figures = main_section.find_all('figure')
+    if not figures:
+        print("No figures found in the main section.")
     for figure in figures:
         caption = figure.find('caption')
         table = figure.find('table')
         if caption and table:
+            print(f"Processing figure with caption: {caption.get_text(strip=True)}")
             caption_text = caption.get_text(strip=True)
             data[caption_text] = {}
             for row in table.find_all('tr'):
@@ -61,6 +64,7 @@ def fetch_constituency_data(constituency_url):
     # Extract the wahlkreis number from the URL
     wahlkreis_number = constituency_url.split('-')[-1].split('.')[0]
     json_filename = f"strukturdaten-{wahlkreis_number}.json"
+    print(f"Saving data to {json_filename}")
     with open(json_filename, 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=4)
     print(f"Data saved to {json_filename}")
