@@ -40,18 +40,32 @@ def fetch_constituency_data(constituency_url):
         return
     soup = BeautifulSoup(response.content, 'html.parser')
     main_section = soup.find('main')
+    if main_section:
+        print("Main section found.")
+    else:
+        print("No main section found.")
+        return
     if not main_section:
         print("No main section found.")
         return
 
     data = {}
     figures = main_section.find_all('figure')
-    if not figures:
+    if figures:
+        print(f"Found {len(figures)} figures.")
+    else:
         print("No figures found in the main section.")
     for figure in figures:
         caption = figure.find('caption')
         table = figure.find('table')
-        if caption and table:
+        if caption:
+            print(f"Caption found: {caption.get_text(strip=True)}")
+        else:
+            print("No caption found in figure.")
+        if table:
+            print("Table found in figure.")
+        else:
+            print("No table found in figure.")
             print(f"Processing figure with caption: {caption.get_text(strip=True)}")
             caption_text = caption.get_text(strip=True)
             data[caption_text] = {}
