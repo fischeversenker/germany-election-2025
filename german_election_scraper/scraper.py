@@ -86,8 +86,8 @@ def fetch_constituency_data(constituency_url):
                     data[caption_text][th_text] = td_text
 
     # Extract the state name and wahlkreis number from the URL
-    state_name = constituency_url.split('/')[-3].split('-')[-1]
-    state_dir = f"strukturdaten/{state_name}"
+    state_number = constituency_url.split('/')[-3].split('-')[-1]
+    state_dir = f"strukturdaten/{state_number}"
     os.makedirs(state_dir, exist_ok=True)
     wahlkreis_number = constituency_url.split('-')[-1].split('.')[0]
     json_filename = f"{state_dir}/strukturdaten-{wahlkreis_number}.json"
