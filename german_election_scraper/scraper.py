@@ -131,12 +131,17 @@ def fetch_constituency_election_results(state_id, constituency_id):
         return
     results = {}
     table = figure.find('table')
-    for row in table.find_all('tr'):
+    tbody = table.find('tbody')
+    for row in tbody.find_all('tr'):
         cells = row.find_all('td')
-        if len(cells) >= 2:
-            party = cells[0].get_text(strip=True)
-            votes = cells[1].get_text(strip=True)
-            results[party] = votes
+        if len(cells) >= 7:
+            label = cells[0].get_text(strip=True)
+            absolute_votes = cells[-3].get_text(strip=True)
+            percent_votes = cells[-2].get_text(strip=True)
+            results[label] = {
+                "absolute_votes": absolute_votes,
+                "percent_votes": percent_votes
+            }
     state_dir = f"strukturdaten/{state_id}"
     os.makedirs(state_dir, exist_ok=True)
     json_filename = f"{state_dir}/election_results_{constituency_id}.json"
