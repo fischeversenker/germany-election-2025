@@ -132,6 +132,7 @@ def fetch_constituency_election_results(state_id, constituency_id):
     results = {}
     table = figure.find('table', attrs={'role': None})
     tbody = table.find('tbody')
+    results['general'] = {}
     for row in tbody.find_all('tr'):
         th = row.find('th')
         cells = row.find_all('td')
@@ -139,7 +140,7 @@ def fetch_constituency_election_results(state_id, constituency_id):
             label = th.get_text(strip=True)
             absolute_votes = cells[-3].get_text(strip=True)
             percent_votes = cells[-2].get_text(strip=True)
-            results[label] = {
+            results['general'][label] = {
                 "absolute_votes": absolute_votes,
                 "percent_votes": percent_votes
             }
