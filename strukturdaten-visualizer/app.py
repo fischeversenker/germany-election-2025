@@ -1,5 +1,9 @@
 from flask import Flask, render_template, jsonify
 import os
+import sys
+
+# Ensure the correct path is set for the application
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import json
 
 app = Flask(__name__)
