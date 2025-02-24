@@ -133,10 +133,10 @@ def fetch_constituency_election_results(state_id, constituency_id):
     table = figure.find('table', attrs={'role': None})
     tbodies = table.find_all('tbody')
     if len(tbodies) < 2:
-        print(f"Expected two tbody elements for constituency {constituency_id}.")
+        print(
+            f"Expected two tbody elements for constituency {constituency_id}.")
         return
     general_tbody, parties_tbody = tbodies
-    results['general'] = {}
     results['general'] = {}
     for row in general_tbody.find_all('tr'):
         th = row.find('th')
