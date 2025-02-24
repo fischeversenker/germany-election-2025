@@ -97,8 +97,45 @@ def fetch_constituency_strukturdaten(constituency_url):
 
 
 def fetch_election_results():
-    base_url = "https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/strukturdaten/"
-    pass
+    base_url = "https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/ergebnisse/"
+    for state_id in range(1, 17):  # Assuming state IDs range from 1 to 16
+        state_url = f"{base_url}bund-99/land-{state_id}.html"
+        response = requests.get(state_url)
+        if response.status_code != 200:
+            print(f"Failed to fetch election results for state {state_id}: {response.status_code}")
+            continue
+        soup = BeautifulSoup(response.content, 'html.parser')
+        constituencies = soup.find_all('a', href=True)
+        for constituency in constituencies:
+            if "wahlkreis-" in constituency['href']:
+                constituency_id = constituency['href'].split('-')[-1].split('.')[0]
+                print(f"Fetching election results for state {state_id}, constituency {constituency_id}")
+                fetch_constituency_election_results(state_id, constituency_id)
+
+def fetch_constituency_election_results(state_id, constituency_id):
+    url = f"https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/ergebnisse/bund-99/land-{state_id}/wahlkreis-{constituency_id}.html"
+    response = requests.get(url)
+    if response.status_code != 200:
+        print(f"Failed to fetch election results for constituency {constituency_id}: {response.status_code}")
+        return
+    soup = BeautifulSoup(response.content, 'html.parser')
+    figure = soup.find('figure', id=lambda x: x and x.startswith('stimmentabellexxxx'))
+    if not figure:
+        print(f"No election results found for constituency {constituency_id}.")
+        return
+    results = {}
+    table = figure.find('table')
+    for row in table.find_all('tr'):
+        cells = row.find_all('td')
+        if len(cells) >= 2:
+            party = cells[0].get_text(strip=True)
+            votes = cells[1].get_text(strip=True)
+            results[party] = votes
+    state_dir = f"strukturdaten/{state_id}"
+    os.makedirs(state_dir, exist_ok=True)
+    json_filename = f"{state_dir}/election_results_{constituency_id}.json"
+    with open(json_filename, 'w', encoding='utf-8') as json_file:
+        json.dump(results, json_file, ensure_ascii=False, indent=4)
 
 
 if __name__ == "__main__":
