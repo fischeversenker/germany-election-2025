@@ -33,16 +33,21 @@ def load_data():
 
 def analyze_data(data):
     # Example analysis: Correlation between education level and voting patterns
-    education_levels = []
+    education_without_degree = []
+    education_with_university = []
     spd_votes = []
     cdu_votes = []
     afd_votes = []
     gruene_votes = []
 
     for entry in data:
-        education = float(entry['strukturdaten'].get('General Education System', {}).get(
-            'Graduates an school leavers having completed their education 2022', {}).get('Without Secondary School Certificate', 0).replace(' %', ''))
-        education_levels.append(education)
+        education = entry['strukturdaten'].get('General Education System', {}).get(
+            'Graduates an school leavers having completed their education 2022', {})
+        education_without_degree.append(float(education.get(
+            'Without Secondary School Certificate', 0)))
+        education_with_university.append(
+            float(education.get('With University Entrance Qualification', 0)))
+
         partyVotes = entry['election_results']['parties']
         spd_votes.append(partyVotes.get('SPD', {}).get('absolute_votes', 0))
         cdu_votes.append(partyVotes.get('CDU', {}).get('absolute_votes', 0))
@@ -50,21 +55,21 @@ def analyze_data(data):
         gruene_votes.append(partyVotes.get(
             'GRÜNE', {}).get('absolute_votes', 0))
 
-    df = pd.DataFrame({
-        'Percentage without a school degree': education_levels,
+    correlation_with_university = pd.DataFrame({
+        # 'Percentage without a school degree': education_without_degree,
+        'University qualification [%]': education_with_university,
         'Votes for SPD': spd_votes,
         'Votes for CDU': cdu_votes,
         'Votes for AfD': afd_votes,
         'Votes for Grüne': gruene_votes,
     })
 
-    print(f"Number of constituencies considered: {len(data)}")
-    correlation = df.corr()
+    correlation = correlation_with_university.corr()
     print("Correlation matrix:")
     print(correlation)
 
-    sns.scatterplot(x='Percentage without a school degree',
-                    y='Votes for SPD', data=df)
+    sns.scatterplot(x='University qualification [%]',
+                    y='Votes for AfD', data=correlation_with_university)
     plt.title('Correlation between Education Level and Votes for Some Party')
     plt.show()
 
