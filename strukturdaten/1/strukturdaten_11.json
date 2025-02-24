@@ -52,10 +52,10 @@
     "General Education System": {
         "Graduates an school leavers having completed their education 2022": {
             "... total without externals (per 1,000 inhabitants)": 8.5,
-            "... without secondary general school certificate": "11.3 %",
-            "... with secondary general school certificate": "18.6 %",
-            "... with intermediate school certificate": "31.4 %",
-            "... with university entrance qualification": "38.6 %"
+            "Without Secondary School Certificate": "11.3",
+            "With Secondary General School Certificate": "18.6",
+            "With Intermediate School Certificate": "31.4",
+            "With University Entrance Qualification": "38.6"
         }
     },
     "Children in publicly funded day care": {

@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 def load_data():
     data = []
     for state_id in range(1, 17):
@@ -13,9 +14,11 @@ def load_data():
                 if filename.startswith('strukturdaten_') and filename.endswith('.json'):
                     with open(os.path.join(state_dir, filename), 'r', encoding='utf-8') as f:
                         strukturdaten = json.load(f)
-                        wahlkreis_number = filename.split('_')[-1].split('.')[0]
+                        wahlkreis_number = filename.split(
+                            '_')[-1].split('.')[0]
                         election_filename = f"election_results_{wahlkreis_number}.json"
-                        election_filepath = os.path.join(state_dir, election_filename)
+                        election_filepath = os.path.join(
+                            state_dir, election_filename)
                         if os.path.exists(election_filepath):
                             with open(election_filepath, 'r', encoding='utf-8') as ef:
                                 election_results = json.load(ef)
@@ -27,29 +30,43 @@ def load_data():
                                 })
     return data
 
+
 def analyze_data(data):
     # Example analysis: Correlation between education level and voting patterns
     education_levels = []
-    party_votes = []
+    spd_votes = []
+    cdu_votes = []
+    afd_votes = []
+    gruene_votes = []
 
     for entry in data:
-        education = entry['strukturdaten'].get('Education', {}).get('General education', {}).get('Total', 0)
-        votes = entry['election_results']['parties'].get('Some Party', {}).get('absolute_votes', 0)
+        education = float(entry['strukturdaten'].get('General Education System', {}).get(
+            'Graduates an school leavers having completed their education 2022', {}).get('Without Secondary School Certificate', 0).replace(' %', ''))
         education_levels.append(education)
-        party_votes.append(votes)
+        partyVotes = entry['election_results']['parties']
+        spd_votes.append(partyVotes.get('SPD', {}).get('absolute_votes', 0))
+        cdu_votes.append(partyVotes.get('CDU', {}).get('absolute_votes', 0))
+        afd_votes.append(partyVotes.get('AfD', {}).get('absolute_votes', 0))
+        gruene_votes.append(partyVotes.get(
+            'GRÜNE', {}).get('absolute_votes', 0))
 
     df = pd.DataFrame({
-        'Education Level': education_levels,
-        'Votes for Some Party': party_votes
+        'Percentage without a school degree': education_levels,
+        'Votes for SPD': spd_votes,
+        'Votes for CDU': cdu_votes,
+        'Votes for AfD': afd_votes,
+        'Votes for Grüne': gruene_votes,
     })
 
     correlation = df.corr()
     print("Correlation matrix:")
     print(correlation)
 
-    sns.scatterplot(x='Education Level', y='Votes for Some Party', data=df)
+    sns.scatterplot(x='Percentage without a school degree',
+                    y='Votes for SPD', data=df)
     plt.title('Correlation between Education Level and Votes for Some Party')
     plt.show()
+
 
 if __name__ == "__main__":
     data = load_data()

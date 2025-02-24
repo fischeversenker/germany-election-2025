@@ -183,21 +183,33 @@ def clean_data():
                     filepath = os.path.join(state_dir, filename)
                     with open(filepath, 'r', encoding='utf-8') as f:
                         data = json.load(f)
-                    
+
                     # Access the relevant section and update labels
-                    general_education = data.get("General Education System", {})
-                    graduates = general_education.get("Graduates an school leavers having completed their edutcation 2022", {})
-                    
+                    general_education = data.get(
+                        "General Education System", {})
+                    graduates = general_education.get(
+                        "Graduates an school leavers having completed their education 2022", {})
+
                     # Update labels
                     if len(graduates) >= 5:
                         keys = list(graduates.keys())
-                        graduates["Without Secondary School Certificate"] = graduates.pop(keys[1])
-                        graduates["With Secondary General School Certificate"] = graduates.pop(keys[2])
-                        graduates["With Intermediate School Certificate"] = graduates.pop(keys[3])
-                        graduates["With University Entrance Qualification"] = graduates.pop(keys[4])
-                    
+                        graduates["Without Secondary School Certificate"] = graduates.pop(
+                            keys[1]).replace('\xa0%', '')
+                        graduates["With Secondary General School Certificate"] = graduates.pop(
+                            keys[2]).replace('\xa0%', '')
+
+                        graduates["With Intermediate School Certificate"] = graduates.pop(
+                            keys[3]).replace('\xa0%', '')
+
+                        graduates["With University Entrance Qualification"] = graduates.pop(
+                            keys[4]).replace('\xa0%', '')
+
                     # Save the updated data back to the file
                     with open(filepath, 'w', encoding='utf-8') as f:
                         json.dump(data, f, ensure_ascii=False, indent=4)
-    fetch_strukturdaten()
-    fetch_election_results()
+
+
+if __name__ == "__main__":
+    # fetch_strukturdaten()
+    # fetch_election_results()
+    clean_data()
