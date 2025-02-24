@@ -131,9 +131,14 @@ def fetch_constituency_election_results(state_id, constituency_id):
         return
     results = {}
     table = figure.find('table', attrs={'role': None})
-    tbody = table.find('tbody')
+    tbodies = table.find_all('tbody')
+    if len(tbodies) < 2:
+        print(f"Expected two tbody elements for constituency {constituency_id}.")
+        return
+    general_tbody, parties_tbody = tbodies
     results['general'] = {}
-    for row in tbody.find_all('tr'):
+    results['general'] = {}
+    for row in general_tbody.find_all('tr'):
         th = row.find('th')
         cells = row.find_all('td')
         if th and len(cells) >= 6:
@@ -144,7 +149,18 @@ def fetch_constituency_election_results(state_id, constituency_id):
                 "absolute_votes": absolute_votes,
                 "percent_votes": percent_votes
             }
-    state_dir = f"strukturdaten/{state_id}"
+    results['parties'] = {}
+    for row in parties_tbody.find_all('tr'):
+        th = row.find('th')
+        cells = row.find_all('td')
+        if th and len(cells) >= 6:
+            label = th.get_text(strip=True)
+            absolute_votes = cells[-3].get_text(strip=True)
+            percent_votes = cells[-2].get_text(strip=True)
+            results['parties'][label] = {
+                "absolute_votes": absolute_votes,
+                "percent_votes": percent_votes
+            }
     os.makedirs(state_dir, exist_ok=True)
     json_filename = f"{state_dir}/election_results_{constituency_id}.json"
     with open(json_filename, 'w', encoding='utf-8') as json_file:
