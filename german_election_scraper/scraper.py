@@ -130,7 +130,7 @@ def fetch_constituency_election_results(state_id, constituency_id):
         print(f"No election results found for constituency {constituency_id}.")
         return
     results = {}
-    table = figure.find('table')
+    table = figure.find('table', attrs={'role': None})
     tbody = table.find('tbody')
     for row in tbody.find_all('tr'):
         cells = row.find_all('td')
