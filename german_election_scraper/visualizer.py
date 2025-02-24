@@ -58,6 +58,7 @@ def analyze_data(data):
         'Votes for Grüne': gruene_votes,
     })
 
+    print(f"Number of constituencies considered: {len(data)}")
     correlation = df.corr()
     print("Correlation matrix:")
     print(correlation)
