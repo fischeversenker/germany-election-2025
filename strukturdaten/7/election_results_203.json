@@ -1,0 +1,98 @@
+{
+    "general": {
+        "Persons entitled to vote": {
+            "absolute_votes": 209489,
+            "percent_votes": "-"
+        },
+        "Voters": {
+            "absolute_votes": 174499,
+            "percent_votes": "83.3"
+        },
+        "Invalid": {
+            "absolute_votes": 1577,
+            "percent_votes": "0.9"
+        },
+        "Valid": {
+            "absolute_votes": 172922,
+            "percent_votes": "99.1"
+        }
+    },
+    "parties": {
+        "SPD": {
+            "absolute_votes": 31353,
+            "percent_votes": "18.1"
+        },
+        "CDU": {
+            "absolute_votes": 56164,
+            "percent_votes": "32.5"
+        },
+        "GRÜNE": {
+            "absolute_votes": 14638,
+            "percent_votes": "8.5"
+        },
+        "FDP": {
+            "absolute_votes": 7959,
+            "percent_votes": "4.6"
+        },
+        "AfD": {
+            "absolute_votes": 36388,
+            "percent_votes": "21.0"
+        },
+        "FREIE WÄHLER": {
+            "absolute_votes": 3791,
+            "percent_votes": "2.2"
+        },
+        "Die Linke": {
+            "absolute_votes": 10315,
+            "percent_votes": "6.0"
+        },
+        "Tierschutzpartei": {
+            "absolute_votes": 2467,
+            "percent_votes": "1.4"
+        },
+        "Die PARTEI": {
+            "absolute_votes": 823,
+            "percent_votes": "0.5"
+        },
+        "Volt": {
+            "absolute_votes": 1150,
+            "percent_votes": "0.7"
+        },
+        "ÖDP": {
+            "absolute_votes": 214,
+            "percent_votes": "0.1"
+        },
+        "MLPD": {
+            "absolute_votes": 30,
+            "percent_votes": "0.0"
+        },
+        "BÜNDNIS DEUTSCHLAND": {
+            "absolute_votes": 300,
+            "percent_votes": "0.2"
+        },
+        "BSW": {
+            "absolute_votes": 7330,
+            "percent_votes": "4.2"
+        },
+        "dieBasis": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Team Todenhöfer": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "PdH": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "PIRATEN": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Political groups/individual candidates": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        }
+    }
+}

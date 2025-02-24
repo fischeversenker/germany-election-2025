@@ -1,0 +1,110 @@
+{
+    "general": {
+        "Persons entitled to vote": {
+            "absolute_votes": 167770,
+            "percent_votes": "-"
+        },
+        "Voters": {
+            "absolute_votes": 138613,
+            "percent_votes": "82.6"
+        },
+        "Invalid": {
+            "absolute_votes": 1432,
+            "percent_votes": "1.0"
+        },
+        "Valid": {
+            "absolute_votes": 137181,
+            "percent_votes": "99.0"
+        }
+    },
+    "parties": {
+        "SPD": {
+            "absolute_votes": 30447,
+            "percent_votes": "22.2"
+        },
+        "CDU": {
+            "absolute_votes": 38981,
+            "percent_votes": "28.4"
+        },
+        "GRÜNE": {
+            "absolute_votes": 9947,
+            "percent_votes": "7.3"
+        },
+        "FDP": {
+            "absolute_votes": 5247,
+            "percent_votes": "3.8"
+        },
+        "AfD": {
+            "absolute_votes": 31856,
+            "percent_votes": "23.2"
+        },
+        "Die Linke": {
+            "absolute_votes": 8575,
+            "percent_votes": "6.3"
+        },
+        "FREIE WÄHLER": {
+            "absolute_votes": 2779,
+            "percent_votes": "2.0"
+        },
+        "Tierschutzpartei": {
+            "absolute_votes": 1743,
+            "percent_votes": "1.3"
+        },
+        "Die PARTEI": {
+            "absolute_votes": 594,
+            "percent_votes": "0.4"
+        },
+        "Volt": {
+            "absolute_votes": 954,
+            "percent_votes": "0.7"
+        },
+        "PdH": {
+            "absolute_votes": 81,
+            "percent_votes": "0.1"
+        },
+        "MLPD": {
+            "absolute_votes": 26,
+            "percent_votes": "0.0"
+        },
+        "BÜNDNIS DEUTSCHLAND": {
+            "absolute_votes": 227,
+            "percent_votes": "0.2"
+        },
+        "BSW": {
+            "absolute_votes": 5724,
+            "percent_votes": "4.2"
+        },
+        "EB:Jäger": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "dieBasis": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Bündnis C": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Team Todenhöfer": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "ÖDP": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Verjüngungsforschung": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "PIRATEN": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Political groups/individual candidates": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        }
+    }
+}

@@ -1,0 +1,118 @@
+{
+    "general": {
+        "Persons entitled to vote": {
+            "absolute_votes": 179871,
+            "percent_votes": "-"
+        },
+        "Voters": {
+            "absolute_votes": 152351,
+            "percent_votes": "84.7"
+        },
+        "Invalid": {
+            "absolute_votes": 970,
+            "percent_votes": "0.6"
+        },
+        "Valid": {
+            "absolute_votes": 151381,
+            "percent_votes": "99.4"
+        }
+    },
+    "parties": {
+        "SPD": {
+            "absolute_votes": 31104,
+            "percent_votes": "20.5"
+        },
+        "CDU": {
+            "absolute_votes": 39797,
+            "percent_votes": "26.3"
+        },
+        "GRÜNE": {
+            "absolute_votes": 19597,
+            "percent_votes": "12.9"
+        },
+        "FDP": {
+            "absolute_votes": 5910,
+            "percent_votes": "3.9"
+        },
+        "AfD": {
+            "absolute_votes": 27522,
+            "percent_votes": "18.2"
+        },
+        "Die Linke": {
+            "absolute_votes": 16006,
+            "percent_votes": "10.6"
+        },
+        "FREIE WÄHLER": {
+            "absolute_votes": 1877,
+            "percent_votes": "1.2"
+        },
+        "Tierschutzpartei": {
+            "absolute_votes": 1690,
+            "percent_votes": "1.1"
+        },
+        "Die PARTEI": {
+            "absolute_votes": 651,
+            "percent_votes": "0.4"
+        },
+        "Volt": {
+            "absolute_votes": 944,
+            "percent_votes": "0.6"
+        },
+        "PdH": {
+            "absolute_votes": 115,
+            "percent_votes": "0.1"
+        },
+        "MLPD": {
+            "absolute_votes": 32,
+            "percent_votes": "0.0"
+        },
+        "BÜNDNIS DEUTSCHLAND": {
+            "absolute_votes": 213,
+            "percent_votes": "0.1"
+        },
+        "BSW": {
+            "absolute_votes": 5923,
+            "percent_votes": "3.9"
+        },
+        "EB:Reitz": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "EB:Wächter": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "EB:Sollwedel": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "dieBasis": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Bündnis C": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Team Todenhöfer": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "ÖDP": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Verjüngungsforschung": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "PIRATEN": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Political groups/individual candidates": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        }
+    }
+}

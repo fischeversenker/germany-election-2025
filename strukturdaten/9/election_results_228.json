@@ -1,0 +1,110 @@
+{
+    "general": {
+        "Persons entitled to vote": {
+            "absolute_votes": 176118,
+            "percent_votes": "-"
+        },
+        "Voters": {
+            "absolute_votes": 144127,
+            "percent_votes": "81.8"
+        },
+        "Invalid": {
+            "absolute_votes": 406,
+            "percent_votes": "0.3"
+        },
+        "Valid": {
+            "absolute_votes": 143721,
+            "percent_votes": "99.7"
+        }
+    },
+    "parties": {
+        "CSU": {
+            "absolute_votes": 55447,
+            "percent_votes": "38.6"
+        },
+        "SPD": {
+            "absolute_votes": 13904,
+            "percent_votes": "9.7"
+        },
+        "GRÜNE": {
+            "absolute_votes": 9821,
+            "percent_votes": "6.8"
+        },
+        "FDP": {
+            "absolute_votes": 4706,
+            "percent_votes": "3.3"
+        },
+        "AfD": {
+            "absolute_votes": 36665,
+            "percent_votes": "25.5"
+        },
+        "FREIE WÄHLER": {
+            "absolute_votes": 9154,
+            "percent_votes": "6.4"
+        },
+        "Die Linke": {
+            "absolute_votes": 5692,
+            "percent_votes": "4.0"
+        },
+        "dieBasis": {
+            "absolute_votes": 300,
+            "percent_votes": "0.2"
+        },
+        "Tierschutzpartei": {
+            "absolute_votes": 873,
+            "percent_votes": "0.6"
+        },
+        "Die PARTEI": {
+            "absolute_votes": 355,
+            "percent_votes": "0.2"
+        },
+        "ÖDP": {
+            "absolute_votes": 1016,
+            "percent_votes": "0.7"
+        },
+        "BP": {
+            "absolute_votes": 241,
+            "percent_votes": "0.2"
+        },
+        "Volt": {
+            "absolute_votes": 488,
+            "percent_votes": "0.3"
+        },
+        "PdH": {
+            "absolute_votes": 71,
+            "percent_votes": "0.0"
+        },
+        "MLPD": {
+            "absolute_votes": 8,
+            "percent_votes": "0.0"
+        },
+        "BÜNDNIS DEUTSCHLAND": {
+            "absolute_votes": 85,
+            "percent_votes": "0.1"
+        },
+        "BSW": {
+            "absolute_votes": 4895,
+            "percent_votes": "3.4"
+        },
+        "Bündnis C": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Team Todenhöfer": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Verjüngungsforschung": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "PIRATEN": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Political groups/individual candidates": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        }
+    }
+}

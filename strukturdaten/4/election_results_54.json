@@ -1,0 +1,110 @@
+{
+    "general": {
+        "Persons entitled to vote": {
+            "absolute_votes": 239823,
+            "percent_votes": "-"
+        },
+        "Voters": {
+            "absolute_votes": 194782,
+            "percent_votes": "81.2"
+        },
+        "Invalid": {
+            "absolute_votes": 983,
+            "percent_votes": "0.5"
+        },
+        "Valid": {
+            "absolute_votes": 193799,
+            "percent_votes": "99.5"
+        }
+    },
+    "parties": {
+        "SPD": {
+            "absolute_votes": 42455,
+            "percent_votes": "21.9"
+        },
+        "GRÜNE": {
+            "absolute_votes": 35822,
+            "percent_votes": "18.5"
+        },
+        "CDU": {
+            "absolute_votes": 41196,
+            "percent_votes": "21.3"
+        },
+        "FDP": {
+            "absolute_votes": 7417,
+            "percent_votes": "3.8"
+        },
+        "Die Linke": {
+            "absolute_votes": 30834,
+            "percent_votes": "15.9"
+        },
+        "AfD": {
+            "absolute_votes": 22792,
+            "percent_votes": "11.8"
+        },
+        "Die PARTEI": {
+            "absolute_votes": 1341,
+            "percent_votes": "0.7"
+        },
+        "FREIE WÄHLER": {
+            "absolute_votes": 598,
+            "percent_votes": "0.3"
+        },
+        "Volt": {
+            "absolute_votes": 2194,
+            "percent_votes": "1.1"
+        },
+        "MENSCHLICHE WELT": {
+            "absolute_votes": 305,
+            "percent_votes": "0.2"
+        },
+        "MLPD": {
+            "absolute_votes": 82,
+            "percent_votes": "0.0"
+        },
+        "BÜNDNIS DEUTSCHLAND": {
+            "absolute_votes": 483,
+            "percent_votes": "0.2"
+        },
+        "BSW": {
+            "absolute_votes": 7973,
+            "percent_votes": "4.1"
+        },
+        "MERA25": {
+            "absolute_votes": 159,
+            "percent_votes": "0.1"
+        },
+        "Verjüngungsforschung": {
+            "absolute_votes": 148,
+            "percent_votes": "0.1"
+        },
+        "EB:Schultz": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "dieBasis": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Team Todenhöfer": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "ÖDP": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "PdH": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Tierschutzpartei": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        },
+        "Political groups/individual candidates": {
+            "absolute_votes": null,
+            "percent_votes": "-"
+        }
+    }
+}
