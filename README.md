@@ -1,5 +1,6 @@
 # German Election Data Project
 
+
 This project consists of two main components:
 
 1. **Scraper**: A Python script that collects data about the German election from the official government website.
@@ -47,6 +48,7 @@ flask run
 
 ### Next Steps
 
-- Ensure the Flask application is running correctly.
 - Expand the dashboard to include more visualizations and data insights.
-
+- re-think Flask. Is it the right choice for a feature-rich good-looking dashboard?
+- put json files into folders for their state. So there should be a folder per state that has the strukturdaten and the election results
+- pull election results for each wahlkreis from https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/ergebnisse/bund-99/land-9/wahlkreis-213.html. Find the election results (Zweitstimme) in the figure with an id that starts with "stimmentabellexxxx".
