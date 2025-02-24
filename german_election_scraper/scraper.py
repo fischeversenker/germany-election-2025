@@ -90,7 +90,7 @@ def fetch_constituency_data(constituency_url):
     state_dir = f"strukturdaten/{state_number}"
     os.makedirs(state_dir, exist_ok=True)
     wahlkreis_number = constituency_url.split('-')[-1].split('.')[0]
-    json_filename = f"{state_dir}/strukturdaten-{wahlkreis_number}.json"
+    json_filename = f"{state_dir}/strukturdaten_{wahlkreis_number}.json"
     with open(json_filename, 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=4)
 
