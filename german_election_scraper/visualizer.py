@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 import matplotlib
-matplotlib.use('TkAgg')
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 
