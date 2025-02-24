@@ -102,24 +102,30 @@ def fetch_election_results():
         state_url = f"{base_url}bund-99/land-{state_id}.html"
         response = requests.get(state_url)
         if response.status_code != 200:
-            print(f"Failed to fetch election results for state {state_id}: {response.status_code}")
+            print(
+                f"Failed to fetch election results for state {state_id}: {response.status_code}")
             continue
         soup = BeautifulSoup(response.content, 'html.parser')
         constituencies = soup.find_all('a', href=True)
         for constituency in constituencies:
             if "wahlkreis-" in constituency['href']:
-                constituency_id = constituency['href'].split('-')[-1].split('.')[0]
-                print(f"Fetching election results for state {state_id}, constituency {constituency_id}")
+                constituency_id = constituency['href'].split(
+                    '-')[-1].split('.')[0]
+                print(
+                    f"Fetching election results for state {state_id}, constituency {constituency_id}")
                 fetch_constituency_election_results(state_id, constituency_id)
+
 
 def fetch_constituency_election_results(state_id, constituency_id):
     url = f"https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/ergebnisse/bund-99/land-{state_id}/wahlkreis-{constituency_id}.html"
     response = requests.get(url)
     if response.status_code != 200:
-        print(f"Failed to fetch election results for constituency {constituency_id}: {response.status_code}")
+        print(
+            f"Failed to fetch election results for constituency {constituency_id}: {response.status_code}")
         return
     soup = BeautifulSoup(response.content, 'html.parser')
-    figure = soup.find('figure', id=lambda x: x and x.startswith('stimmentabellexxxx'))
+    figure = soup.find(
+        'figure', id=lambda x: x and x.startswith('stimmentabelle'))
     if not figure:
         print(f"No election results found for constituency {constituency_id}.")
         return
@@ -139,5 +145,5 @@ def fetch_constituency_election_results(state_id, constituency_id):
 
 
 if __name__ == "__main__":
-    fetch_strukturdaten()
+    # fetch_strukturdaten()
     fetch_election_results()
