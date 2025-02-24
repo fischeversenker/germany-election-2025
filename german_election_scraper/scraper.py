@@ -161,6 +161,7 @@ def fetch_constituency_election_results(state_id, constituency_id):
                 "absolute_votes": absolute_votes,
                 "percent_votes": percent_votes
             }
+    state_dir = f"strukturdaten/{state_id}"
     os.makedirs(state_dir, exist_ok=True)
     json_filename = f"{state_dir}/election_results_{constituency_id}.json"
     with open(json_filename, 'w', encoding='utf-8') as json_file:
