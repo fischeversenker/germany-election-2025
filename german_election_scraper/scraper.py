@@ -143,8 +143,8 @@ def fetch_constituency_election_results(state_id, constituency_id):
         cells = row.find_all('td')
         if th and len(cells) >= 6:
             label = th.get_text(strip=True)
-            absolute_votes = int(
-                cells[-3].get_text(strip=True).replace(',', ''))
+            absolute_votes_text = cells[-3].get_text(strip=True).replace(',', '')
+            absolute_votes = int(absolute_votes_text) if absolute_votes_text.isdigit() else None
             percent_votes = cells[-2].get_text(strip=True)
             results['general'][label] = {
                 "absolute_votes": absolute_votes,
