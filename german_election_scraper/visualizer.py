@@ -1,10 +1,10 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
 import os
 import json
 import pandas as pd
 import matplotlib
 matplotlib.use('Qt5Agg')
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 
 def load_data():
@@ -41,6 +41,7 @@ def analyze_data(data):
     cdu_votes = []
     afd_votes = []
     gruene_votes = []
+    linke_votes = []
 
     for entry in data:
         education = entry['strukturdaten'].get('General Education System', {}).get(
@@ -56,24 +57,42 @@ def analyze_data(data):
         afd_votes.append(partyVotes.get('AfD', {}).get('absolute_votes', 0))
         gruene_votes.append(partyVotes.get(
             'GRÜNE', {}).get('absolute_votes', 0))
+        linke_votes.append(partyVotes.get(
+            'Die Linke', {}).get('absolute_votes', 0))
 
-    correlation_with_university = pd.DataFrame({
+    df_no_degree = pd.DataFrame({
         # 'Percentage without a school degree': education_without_degree,
-        'University qualification [%]': education_with_university,
-        'Votes for SPD': spd_votes,
-        'Votes for CDU': cdu_votes,
-        'Votes for AfD': afd_votes,
-        'Votes for Grüne': gruene_votes,
+        'no_degree [%]': education_without_degree,
+        'Votes SPD': spd_votes,
+        'Votes CDU': cdu_votes,
+        'Votes AfD': afd_votes,
+        'Votes Grüne': gruene_votes,
+        'Votes Linke': linke_votes,
+    })
+    df_with_university = pd.DataFrame({
+        # 'Percentage without a school degree': education_without_degree,
+        'uni_quali [%]': education_with_university,
+        'Votes SPD': spd_votes,
+        'Votes CDU': cdu_votes,
+        'Votes AfD': afd_votes,
+        'Votes Grüne': gruene_votes,
+        'Votes Linke': linke_votes,
     })
 
-    correlation = correlation_with_university.corr()
-    print("Correlation matrix:")
+    correlation = df_no_degree.corr()
+    print("Correlation between no school degree and votes:")
     print(correlation)
 
-    sns.scatterplot(x='University qualification [%]',
-                    y='Votes for AfD', data=correlation_with_university)
-    plt.title('Correlation between Education Level and Votes for Some Party')
-    plt.show()
+    print()
+
+    correlation = df_with_university.corr()
+    print("Correlation between university qualification and votes:")
+    print(correlation)
+
+    # scatter plot has some issues on WSL. Skipping for now.
+    # sns.scatterplot(x='uni_quali [%]', y='Votes for AfD', data=correlation_with_university)
+    # plt.title('Correlation between Education Level and Votes for Some Party')
+    # plt.show()
 
 
 if __name__ == "__main__":
