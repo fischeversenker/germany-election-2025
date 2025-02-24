@@ -29,11 +29,9 @@ The visualizer is a web application built with Flask. It aims to provide a dashb
 ### How to Run the Visualizer
 
 1. Navigate to the visualizer directory.
-2. Set up a Python virtual environment and install Flask:
+2. Install Flask globally:
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
 pip install flask
 ```
 
