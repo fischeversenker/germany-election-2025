@@ -10,7 +10,8 @@ app = Flask(__name__)
 
 def load_data():
     data = {}
-    for filename in os.listdir('../strukturdaten'):
+    state_dir = '../strukturdaten/1'
+    for filename in os.listdir(state_dir):
         if filename.endswith('.json'):
             with open(os.path.join('../strukturdaten', filename), 'r', encoding='utf-8') as f:
                 json_data = json.load(f)
