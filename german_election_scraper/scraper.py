@@ -5,7 +5,7 @@ import json
 from bs4 import BeautifulSoup
 
 
-def fetch_federal_states():
+def fetch_strukturdaten():
     base_url = "https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/strukturdaten/"
     url = base_url + "bund-99.html"
     # Create the directory for JSON files if it doesn't exist
@@ -23,10 +23,10 @@ def fetch_federal_states():
         processed_states.add(state['href'])
         if "bund-99/land-" in state['href']:
             print(f"Processing federal state: {state.text}")
-            fetch_constituencies(base_url + state['href'])
+            fetch_strukturdaten_constituencies(base_url + state['href'])
 
 
-def fetch_constituencies(state_url):
+def fetch_strukturdaten_constituencies(state_url):
     print(f"Fetching constituencies from {state_url}")
     response = requests.get(state_url)
     if response.status_code != 200:
@@ -41,11 +41,11 @@ def fetch_constituencies(state_url):
         processed_constituencies.add(constituency['href'])
         if "land-" in constituency['href'] and "/wahlkreis-" in constituency['href']:
             print(f"Processing constituency: {constituency.text}")
-            fetch_constituency_data(state_url.rsplit(
+            fetch_constituency_strukturdaten(state_url.rsplit(
                 '/', 1)[0] + '/' + constituency['href'])
 
 
-def fetch_constituency_data(constituency_url):
+def fetch_constituency_strukturdaten(constituency_url):
     response = requests.get(constituency_url)
     if response.status_code != 200:
         print(f"Failed to fetch constituency data: {response.status_code}")
@@ -71,7 +71,8 @@ def fetch_constituency_data(constituency_url):
             td = row.find('td')
             if th and not td:
                 # This is a subheading
-                current_subheading = th.get_text(separator=" ", strip=True).rstrip(" i")
+                current_subheading = th.get_text(
+                    separator=" ", strip=True).rstrip(" i")
                 data[caption_text][current_subheading] = {}
             elif th and td:
                 # This is a regular row
@@ -95,5 +96,11 @@ def fetch_constituency_data(constituency_url):
         json.dump(data, json_file, ensure_ascii=False, indent=4)
 
 
+def fetch_election_results():
+    base_url = "https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/strukturdaten/"
+    pass
+
+
 if __name__ == "__main__":
-    fetch_federal_states()
+    fetch_strukturdaten()
+    fetch_election_results()
