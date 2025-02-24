@@ -133,9 +133,10 @@ def fetch_constituency_election_results(state_id, constituency_id):
     table = figure.find('table', attrs={'role': None})
     tbody = table.find('tbody')
     for row in tbody.find_all('tr'):
+        th = row.find('th')
         cells = row.find_all('td')
-        if len(cells) >= 7:
-            label = cells[0].get_text(strip=True)
+        if th and len(cells) >= 6:
+            label = th.get_text(strip=True)
             absolute_votes = cells[-3].get_text(strip=True)
             percent_votes = cells[-2].get_text(strip=True)
             results[label] = {
