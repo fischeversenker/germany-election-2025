@@ -34,6 +34,6 @@ This section explores potential correlations and insights that can be derived fr
 These analyses can provide valuable insights into the socio-political landscape and help in understanding the factors influencing voter behavior in Germany.
 
 - Expand the dashboard to include more visualizations and data insights.
-- re-think Flask. Is it the right choice for a feature-rich good-looking dashboard?
-- put json files into folders for their state. So there should be a folder per state that has the strukturdaten and the election results
-- pull election results for each wahlkreis from https://www.bundeswahlleiterin.de/en/bundestagswahlen/2025/ergebnisse/bund-99/land-9/wahlkreis-213.html. Find the election results (Zweitstimme) in the figure with an id that starts with "stimmentabellexxxx".
+- Evaluate if Flask is the best choice for a feature-rich, visually appealing dashboard.
+- Organize JSON files into folders by state, ensuring each state has its own directory for `strukturdaten` and election results.
+- Automate the process of pulling election results for each constituency (Wahlkreis) from the official website, specifically targeting the "Zweitstimme" results in figures with IDs starting with "stimmentabellexxxx".
