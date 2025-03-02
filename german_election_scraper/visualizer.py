@@ -40,6 +40,7 @@ def analyze_data(data):
     education_without_degree = []
     education_with_university = []
     unemployment_rates = []
+    income = []
     spd_votes = []
     cdu_votes = []
     afd_votes = []
@@ -75,7 +76,10 @@ def analyze_data(data):
         unemployment_rates.append(
             float(unemployment_distribution.get('... total', 0).replace('\xa0%', '')))
 
-        # national accounts: does income play a role?
+        # Extract income data
+        income_data = entry['strukturdaten'].get('National accounts', {}).get(
+            'Disposable income of households 2021 (EUR per habitant)', '0').replace(',', '')
+        income.append(float(income_data))
         # migration percentage?
 
         partyVotes = entry['election_results']['parties']
@@ -117,14 +121,23 @@ def analyze_data(data):
         'Votes Grüne': gruene_votes,
         'Votes Linke': linke_votes,
     })
+    df_income = pd.DataFrame({
+        'Disposable Income': income,
+        'Votes SPD': spd_votes,
+        'Votes CDU': cdu_votes,
+        'Votes AfD': afd_votes,
+        'Votes Grüne': gruene_votes,
+        'Votes Linke': linke_votes,
+    })
+    
     df_unemployment = pd.DataFrame({
-                                   'Unemployment rate': unemployment_rates,
-                                   'Votes SPD': spd_votes,
-                                   'Votes CDU': cdu_votes,
-                                   'Votes AfD': afd_votes,
-                                   'Votes Grüne': gruene_votes,
-                                   'Votes Linke': linke_votes,
-                                   })
+        'Unemployment rate': unemployment_rates,
+        'Votes SPD': spd_votes,
+        'Votes CDU': cdu_votes,
+        'Votes AfD': afd_votes,
+        'Votes Grüne': gruene_votes,
+        'Votes Linke': linke_votes,
+    })
 
     correlation = df_no_degree.corr()
     print("Correlation between no school degree and votes:")
@@ -144,7 +157,11 @@ def analyze_data(data):
 
     print()
 
-    correlation_unemployment = df_unemployment.corr()
+    correlation_income = df_income.corr()
+    print("Correlation between disposable income and votes:")
+    print(correlation_income)
+
+    print()
     print("Correlation between unemployment rates and votes:")
     print(correlation_unemployment)
 
