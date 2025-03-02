@@ -40,6 +40,7 @@ def analyze_data(data):
     education_without_degree = []
     education_with_university = []
     unemployment_rates = []
+    foreigners_percentages = []
     income = []
     spd_votes = []
     cdu_votes = []
@@ -54,17 +55,20 @@ def analyze_data(data):
     age_75_plus = []
 
     for entry in data:
-        age_distribution = entry['strukturdaten'].get('Population and age', {})
-        age_18_24.append(float(age_distribution.get(
+        population_and_age = entry['strukturdaten'].get(
+            'Population and age', {})
+        age_18_24.append(float(population_and_age.get(
             '... 18 - 24', 0).replace('\xa0%', '')))
-        age_25_34.append(float(age_distribution.get(
+        age_25_34.append(float(population_and_age.get(
             '... 25 - 34', 0).replace('\xa0%', '')))
-        age_35_59.append(float(age_distribution.get(
+        age_35_59.append(float(population_and_age.get(
             '... 35 - 59', 0).replace('\xa0%', '')))
-        age_60_74.append(float(age_distribution.get(
+        age_60_74.append(float(population_and_age.get(
             '... 60 - 74', 0).replace('\xa0%', '')))
-        age_75_plus.append(float(age_distribution.get(
+        age_75_plus.append(float(population_and_age.get(
             '... 75 and over', 0).replace('\xa0%', '')))
+        foreigners_percentages.append(float(population_and_age.get(
+            "Population figures on 31 Dec. 2023", {}).get("... therefrom foreigners", 0).replace('\xa0%', '')))
         education = entry['strukturdaten'].get('General Education System', {}).get(
             'Graduates an school leavers having completed their education 2022', {})
         education_without_degree.append(float(education.get(
@@ -137,6 +141,14 @@ def analyze_data(data):
         'Votes Grüne': gruene_votes,
         'Votes Linke': linke_votes,
     })
+    df_foreigners = pd.DataFrame({
+        'Foreigners [%]': foreigners_percentages,
+        'Votes SPD': spd_votes,
+        'Votes CDU': cdu_votes,
+        'Votes AfD': afd_votes,
+        'Votes Grüne': gruene_votes,
+        'Votes Linke': linke_votes,
+    })
 
     correlation_no_degree = df_no_degree.corr()
     print("Correlation between no school degree and votes:")
@@ -165,6 +177,12 @@ def analyze_data(data):
     correlation_unemployment = df_unemployment.corr()
     print("Correlation between unemployment rates and votes:")
     print(correlation_unemployment)
+
+    print()
+
+    correlation_foreigners = df_foreigners.corr()
+    print("Correlation between foreigners and votes:")
+    print(correlation_foreigners)
 
 
 if __name__ == "__main__":
