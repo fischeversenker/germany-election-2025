@@ -51,3 +51,36 @@ The visualizer provides correlation analyses for:
 
  These analyses can provide valuable insights into the socio-political landscape and help in understanding the factors influencing voter behavior in Germany.
 
+## Results
+
+This is the analysis of Gemini Flash to the correlation matrices produced and printed by the visualizer.py.
+
+### Overall Trends:
+#### Education:
+- Higher education levels correlate with increased support for SPD, Grüne, and Die Linke.
+- Lower education levels correlate strongly with increased support for AfD.
+- CDU's support shows a weak positive correlation with higher education.
+#### Age:
+- Younger voters (18-34) favor SPD and Grüne, with some support for Die Linke.
+- Older voters (60+) strongly support AfD, with less support for SPD and Grüne.
+- CDU's support is relatively age-neutral.
+#### Unemployment:
+- Higher unemployment areas correlate with increased support for SPD and Die Linke.
+- Higher unemployment correlates with decreased support for AfD.
+- Unemployment has little impact on CDU and Grüne support.
+#### Income:
+- Higher income areas strongly favor Grüne.
+- Higher income areas correlate with decreased support for AfD and Die Linke.
+- Income has minimal impact on SPD and CDU support.
+#### Foreigners:
+- Areas with a higher percentage of foreigners show increased support for Grüne and Die Linke.
+- Areas with a higher percentage of foreigners show decreased support for AfD.
+- SPD has a moderate positive correlation with areas that have a higher percentage of foreigners.
+- CDU support is not significantly impacted by the percentage of foreigners.
+
+### Key Party Takeaways:
+- **AfD**: Strongest support from older, less-educated, and lower-income demographics, and in areas with fewer foreigners.
+- **Grüne**: Strongest support from younger, highly educated, and higher-income demographics, and in areas with more foreigners.
+- **SPD**: Moderate support across younger, higher-educated, and higher-unemployment demographics, and areas with more foreigners.
+- **Die Linke**: Moderate support from higher educated and higher unemployment demographics, and areas with more foreigners. Lower support from higher income demographics.
+- **CDU**: Support is less influenced by the analyzed demographic factors, showing relatively weak correlations across the board.
