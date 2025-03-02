@@ -39,6 +39,7 @@ def analyze_data(data):
     pd.set_option('display.width', 0)
     education_without_degree = []
     education_with_university = []
+    unemployment_rates = []
     spd_votes = []
     cdu_votes = []
     afd_votes = []
@@ -69,6 +70,13 @@ def analyze_data(data):
             'Without Secondary School Certificate', 0)))
         education_with_university.append(
             float(education.get('With University Entrance Qualification', 0)))
+        unemployment_distribution = entry['strukturdaten'].get(
+            'Unemployment rate', {}).get('Unemployment rate at the end of November 2024', {})
+        unemployment_rates.append(
+            float(unemployment_distribution.get('... total', 0).replace('\xa0%', '')))
+
+        # national accounts: does income play a role?
+        # migration percentage?
 
         partyVotes = entry['election_results']['parties']
         spd_votes.append(partyVotes.get('SPD', {}).get('absolute_votes', 0))
@@ -109,6 +117,14 @@ def analyze_data(data):
         'Votes Grüne': gruene_votes,
         'Votes Linke': linke_votes,
     })
+    df_unemployment = pd.DataFrame({
+                                   'Unemployment rate': unemployment_rates,
+                                   'Votes SPD': spd_votes,
+                                   'Votes CDU': cdu_votes,
+                                   'Votes AfD': afd_votes,
+                                   'Votes Grüne': gruene_votes,
+                                   'Votes Linke': linke_votes,
+                                   })
 
     correlation = df_no_degree.corr()
     print("Correlation between no school degree and votes:")
@@ -125,6 +141,12 @@ def analyze_data(data):
     correlation_age = df_age.corr()
     print("Correlation between age groups and votes:")
     print(correlation_age)
+
+    print()
+
+    correlation_unemployment = df_unemployment.corr()
+    print("Correlation between unemployment rates and votes:")
+    print(correlation_unemployment)
 
 
 if __name__ == "__main__":
