@@ -1,39 +1,53 @@
 # German Election Data Project
 
+ ## Project Overview
 
-This project consists of two main components:
+ This project consists of two main components:
 
-1. **Scraper**: A Python script that collects data about the German election from the official government website.
+ 1. **Scraper**: A Python script that collects data about the German election from the official government website.
+ 2. **Visualizer**: A Python script that analyzes and visualizes the collected data to provide insights into voting patterns and correlations with various socio-economic
+ factors.
 
-## Scraper
+ ## Setup
 
-The scraper is responsible for fetching data from the German election website and saving it as JSON files. It processes each federal state and its constituencies to extract relevant data.
+ To set up the project, ensure you have `pipenv` installed. If not, you can install it using:
 
-### How to Run the Scraper
+ ```bash
+ pip install pipenv
+ ```
 
-1. Navigate to the scraper directory.
-2. Ensure you have the necessary Python packages installed.
-3. Run the scraper script:
+ Then, navigate to the `german_election_scraper` directory and install the dependencie
 
-```bash
-python3 german_election_scraper/scraper.py
-```
+ ```bash
+ pipenv install
+ ```
 
-The data will be saved in the `strukturdaten` directory as JSON files.
+ ## Scraper
 
-### Analysis of the Data
+ The scraper is responsible for fetching data from the German election website and saving it as JSON files. It processes each federal state and its constituencies to extract relevant data.
 
-This section explores potential correlations and insights that can be derived from the collected election and structural data:
+ ### How to Run the Scraper
 
-- **Education and Voting Patterns**: Analyze how the level of education in a constituency correlates with voting preferences, particularly for parties that emphasize education policies.
-- **Urban vs. Rural Voting Trends**: Compare voting patterns between urban and rural constituencies to identify any significant differences in party support.
-- **Economic Indicators and Election Results**: Investigate the relationship between economic factors such as unemployment rates or average income and the election outcomes in different constituencies.
-- **Demographic Influence**: Examine how demographic factors like age distribution and population density affect voting behavior and party support.
-- **Historical Voting Trends**: Analyze changes in voting patterns over time to identify shifts in political alignment or emerging trends in specific regions.
+ ```bash
+ python3 german_election_scraper/scraper.py
+ ```
 
-These analyses can provide valuable insights into the socio-political landscape and help in understanding the factors influencing voter behavior in Germany.
+ The data will be saved in the `strukturdaten` directory as JSON files and are part of this repository.
 
-- Expand the dashboard to include more visualizations and data insights.
-- Evaluate if Flask is the best choice for a feature-rich, visually appealing dashboard.
-- Organize JSON files into folders by state, ensuring each state has its own directory for `strukturdaten` and election results.
-- Automate the process of pulling election results for each constituency (Wahlkreis) from the official website, specifically targeting the "Zweitstimme" results in figures with IDs starting with "stimmentabellexxxx".
+ ## Visualizer
+
+ The visualizer analyzes the collected data to provide insights into various correlations and voting patterns.
+
+ ### How to Run the Visualizer
+
+ ```bash
+ python3 german_election_scraper/visualizer.py
+ ```
+The visualizer provides correlation analyses for:
+
+ - **Education and Voting Patterns**: Analyze how the level of education in a constituency correlates with voting preferences, particularly for parties that emphasize education policies.
+ - **Economic Indicators and Election Results**: Investigate the relationship between economic factors such as unemployment rates or average income and the election outcom in different constituencies.
+ - **Demographic Influence**: Examine how demographic factors like age distribution an population density affect voting behavior and party support.
+
+ These analyses can provide valuable insights into the socio-political landscape and help in understanding the factors influencing voter behavior in Germany.
+
