@@ -45,19 +45,22 @@ def analyze_data(data):
 
     age_18_24 = []
     age_25_34 = []
-    age_35_44 = []
-    age_45_54 = []
-    age_55_64 = []
-    age_65_plus = []
+    age_35_59 = []
+    age_60_74 = []
+    age_75_plus = []
 
     for entry in data:
-        age_distribution = entry['strukturdaten'].get('Age Distribution', {})
-        age_18_24.append(float(age_distribution.get('18-24', 0)))
-        age_25_34.append(float(age_distribution.get('25-34', 0)))
-        age_35_44.append(float(age_distribution.get('35-44', 0)))
-        age_45_54.append(float(age_distribution.get('45-54', 0)))
-        age_55_64.append(float(age_distribution.get('55-64', 0)))
-        age_65_plus.append(float(age_distribution.get('65+', 0)))
+        age_distribution = entry['strukturdaten'].get('Population and age', {})
+        age_18_24.append(float(age_distribution.get(
+            '... 18 - 24', 0).replace('\xa0%', '')))
+        age_25_34.append(float(age_distribution.get(
+            '... 25 - 34', 0).replace('\xa0%', '')))
+        age_35_59.append(float(age_distribution.get(
+            '... 35 - 59', 0).replace('\xa0%', '')))
+        age_60_74.append(float(age_distribution.get(
+            '... 60 - 74', 0).replace('\xa0%', '')))
+        age_75_plus.append(float(age_distribution.get(
+            '... 75 and over', 0).replace('\xa0%', '')))
         education = entry['strukturdaten'].get('General Education System', {}).get(
             'Graduates an school leavers having completed their education 2022', {})
         education_without_degree.append(float(education.get(
@@ -82,16 +85,22 @@ def analyze_data(data):
         'Votes AfD': afd_votes,
         'Votes Grüne': gruene_votes,
         'Votes Linke': linke_votes,
-        'Age 18-24': age_18_24,
-        'Age 25-34': age_25_34,
-        'Age 35-44': age_35_44,
-        'Age 45-54': age_45_54,
-        'Age 55-64': age_55_64,
-        'Age 65+': age_65_plus,
     })
     df_with_university = pd.DataFrame({
         # 'Percentage without a school degree': education_without_degree,
         'uni_quali [%]': education_with_university,
+        'Votes SPD': spd_votes,
+        'Votes CDU': cdu_votes,
+        'Votes AfD': afd_votes,
+        'Votes Grüne': gruene_votes,
+        'Votes Linke': linke_votes,
+    })
+    df_age = pd.DataFrame({
+        'Age 18-24': age_18_24,
+        'Age 25-34': age_25_34,
+        'Age 35-59': age_35_59,
+        'Age 60-74': age_60_74,
+        'Age 75+': age_75_plus,
         'Votes SPD': spd_votes,
         'Votes CDU': cdu_votes,
         'Votes AfD': afd_votes,
@@ -109,12 +118,11 @@ def analyze_data(data):
     print("Correlation between university qualification and votes:")
     print(correlation)
 
-    correlation_age = df_no_degree.corr()
+    print()
+
+    correlation_age = df_age.corr()
     print("Correlation between age groups and votes:")
     print(correlation_age)
-    # sns.scatterplot(x='uni_quali [%]', y='Votes for AfD', data=correlation_with_university)
-    # plt.title('Correlation between Education Level and Votes for Some Party')
-    # plt.show()
 
 
 if __name__ == "__main__":
