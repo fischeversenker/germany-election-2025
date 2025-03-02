@@ -34,7 +34,8 @@ def load_data():
 
 
 def analyze_data(data):
-    # Example analysis: Correlation between education level and voting patterns
+    # Set display options to show all columns
+    pd.set_option('display.max_columns', None)
     education_without_degree = []
     education_with_university = []
     spd_votes = []
