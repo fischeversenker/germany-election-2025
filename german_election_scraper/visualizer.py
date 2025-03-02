@@ -1,5 +1,3 @@
-import seaborn as sns
-import matplotlib.pyplot as plt
 import os
 import json
 import pandas as pd
