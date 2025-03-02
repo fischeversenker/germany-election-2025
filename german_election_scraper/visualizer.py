@@ -121,7 +121,7 @@ def analyze_data(data):
         'Votes Grüne': gruene_votes,
         'Votes Linke': linke_votes,
     })
-    correlation_unemployment = df_unemployment.corr()
+    df_income = pd.DataFrame({
         'Disposable Income': income,
         'Votes SPD': spd_votes,
         'Votes CDU': cdu_votes,
@@ -129,7 +129,6 @@ def analyze_data(data):
         'Votes Grüne': gruene_votes,
         'Votes Linke': linke_votes,
     })
-    
     df_unemployment = pd.DataFrame({
         'Unemployment rate': unemployment_rates,
         'Votes SPD': spd_votes,
@@ -139,15 +138,15 @@ def analyze_data(data):
         'Votes Linke': linke_votes,
     })
 
-    correlation = df_no_degree.corr()
+    correlation_no_degree = df_no_degree.corr()
     print("Correlation between no school degree and votes:")
-    print(correlation)
+    print(correlation_no_degree)
 
     print()
 
-    correlation = df_with_university.corr()
+    correlation_with_university = df_with_university.corr()
     print("Correlation between university qualification and votes:")
-    print(correlation)
+    print(correlation_with_university)
 
     print()
 
@@ -162,6 +161,8 @@ def analyze_data(data):
     print(correlation_income)
 
     print()
+
+    correlation_unemployment = df_unemployment.corr()
     print("Correlation between unemployment rates and votes:")
     print(correlation_unemployment)
 
