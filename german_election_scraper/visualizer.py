@@ -121,7 +121,7 @@ def analyze_data(data):
         'Votes Grüne': gruene_votes,
         'Votes Linke': linke_votes,
     })
-    df_income = pd.DataFrame({
+    correlation_unemployment = df_unemployment.corr()
         'Disposable Income': income,
         'Votes SPD': spd_votes,
         'Votes CDU': cdu_votes,
