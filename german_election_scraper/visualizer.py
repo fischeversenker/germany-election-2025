@@ -37,6 +37,7 @@ def analyze_data(data):
     # Set display options to show all columns
     pd.set_option('display.max_columns', None)
     pd.set_option('display.width', 0)
+    education_without_degree = []
     education_with_university = []
     spd_votes = []
     cdu_votes = []
